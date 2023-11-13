@@ -1,0 +1,29 @@
+.part-details {
+	display: flex;
+
+	img {
+		height: 75px;
+		width: 75px;
+	}
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		margin-left: 16px;
+
+		&-name {
+			margin: 0;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			max-width: 225px;
+			overflow: hidden;
+		}
+
+		&-code {
+			color: #dc7a29;
+			margin: 0;
+		}
+	}
+}

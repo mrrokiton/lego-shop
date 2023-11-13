@@ -1,0 +1,41 @@
+.picking-tile {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+
+	height: 400px;
+	width: 350px;
+
+	background-color: #fff;
+	color: #000;
+
+	border-radius: 20px;
+
+	align-items: center;
+
+	font-weight: 600;
+
+	img {
+		height: 200px;
+		width: 150px;
+		margin-top: 50px;
+	}
+
+	&-name {
+		margin: 0;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 300px;
+		overflow: hidden;
+	}
+
+	&-details {
+		margin: 0;
+		cursor: pointer;
+		color: #dc7a29;
+	}
+
+	&.selected {
+		box-shadow: 0px 0px 10px 10px #dc7a29;
+	}
+}
