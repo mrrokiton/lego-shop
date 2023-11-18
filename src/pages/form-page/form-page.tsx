@@ -6,7 +6,8 @@ import { InputErrors } from '../../components/details-input/details-input-types'
 
 import './form-page.scss';
 import { DetailsInput } from '../../components/details-input/details-input';
-import { UserDetails } from '../../utils/util-types';
+import { ShipmentDetails } from '../../utils/util-types';
+
 const defaultErrors = {
 	name: false,
 	surname: false,
@@ -39,17 +40,21 @@ export const FormPage = () => {
 
 	useEffect(() => {
 		let isError = false;
-		for (const [key, value] of Object.entries(inputErrors)) {
+		for (const [_, value] of Object.entries(inputErrors)) {
 			if (!value) {
 				isError = true;
 				break;
 			}
 		}
 		setIsSubmitDisabled(isError);
+		console.log(isSubmitDisabled);
+		console.log(defaultErrors);
 	}, [inputErrors]);
 
-	const submitHandler = () => {
-		const userDetails: UserDetails = {
+	const submitHandler = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+
+		const shipmentDetails: ShipmentDetails = {
 			name: nameInputRef.current.value,
 			surname: surnameInputRef.current.value,
 			phoneNumber: Number(phoneNumberInputRef.current.value),
@@ -59,14 +64,15 @@ export const FormPage = () => {
 			city: cityInputRef.current.value,
 			state: stateInputRef.current.value,
 			zipCode: zipCodeInputRef.current.value,
+			minifigId,
 		};
 
-		console.log('submitted', userDetails);
+		console.log('submitted', shipmentDetails);
 		navigate(RoutePaths.HOME);
 	};
 
 	return (
-		<div className='form-page'>
+		<form className='form-page' onSubmit={submitHandler}>
 			<div className='form-page-container'>
 				<h2>SHIPPING DETAILS</h2>
 				<div className='form-page-container-details'>
@@ -158,11 +164,7 @@ export const FormPage = () => {
 					</div>
 				</div>
 			</div>
-			<SummaryBar
-				minifigId={minifigId}
-				onSubmit={submitHandler}
-				isSubmitDisabled={isSubmitDisabled}
-			/>
-		</div>
+			<SummaryBar minifigId={minifigId} isSubmitDisabled={isSubmitDisabled} />
+		</form>
 	);
 };

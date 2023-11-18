@@ -23,7 +23,7 @@ export type PartsMinifigApiResponse = {
 	}[];
 };
 
-export type UserDetails = {
+export type ShipmentDetails = {
 	name: string;
 	surname: string;
 	phoneNumber: number;
@@ -33,4 +33,5 @@ export type UserDetails = {
 	city: string;
 	state: string;
 	zipCode: string;
+	minifigId: string;
 };

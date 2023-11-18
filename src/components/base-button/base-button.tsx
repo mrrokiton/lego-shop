@@ -7,6 +7,7 @@ export const BaseButton = ({
 	onClick,
 	isShadow = false,
 	isDisabled = false,
+	type = 'button',
 }: BaseButtonProps) => (
 	<button
 		className={`base-button ${isShadow ? 'shadow' : ''} ${
@@ -14,6 +15,7 @@ export const BaseButton = ({
 		}`}
 		onClick={onClick}
 		disabled={isDisabled}
+		type={type}
 	>
 		{buttonText}
 	</button>

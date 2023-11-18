@@ -8,6 +8,7 @@ import { Minifig } from '../../utils/util-types';
 import { DetailsModal } from '../../components/details-modal/details-modal';
 
 import './pick-page.scss';
+import { Loading } from '../../components/loading/loading';
 
 export const PickPage = () => {
 	const [minifigs, setMinifigs] = useState<Minifig[] | null>(null);
@@ -30,15 +31,19 @@ export const PickPage = () => {
 					isModalOpen={isModalOpen}
 					setIsModalOpen={setIsModalOpen}
 				/>
-				{minifigs && minifigs.length > 0 && (
-					<PickingList
-						minifigs={minifigs}
-						selectedMinifig={selectedMinifig}
-						setSelectedMinifig={setSelectedMinifig}
-						IsModalOpen={isModalOpen}
-						setIsModalOpen={setIsModalOpen}
-						setModalMinifigId={setModalMinifigId}
-					/>
+				{minifigs ? (
+					minifigs.length > 0 && (
+						<PickingList
+							minifigs={minifigs}
+							selectedMinifig={selectedMinifig}
+							setSelectedMinifig={setSelectedMinifig}
+							IsModalOpen={isModalOpen}
+							setIsModalOpen={setIsModalOpen}
+							setModalMinifigId={setModalMinifigId}
+						/>
+					)
+				) : (
+					<Loading />
 				)}
 				<BaseButton
 					buttonText='PROCEED TO SHIPMENT'
