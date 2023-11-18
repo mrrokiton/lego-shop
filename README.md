@@ -8,4 +8,4 @@ Before start fill .env file with api key
 
 ```npm run dev``` to start
 
-Please check ```fix-form``` branch
+Please check ```form-fix``` branch
